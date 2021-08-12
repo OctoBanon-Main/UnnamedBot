@@ -1,0 +1,7 @@
+{
+    "token": "",
+    "prefix": "-",
+    "current_game": "-help",
+    "extensions": ["cogs.help", "cogs.admin", "cogs.serverowner", "cogs.errorhandler"],
+    "mute_role": ""
+}
