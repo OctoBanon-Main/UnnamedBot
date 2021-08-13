@@ -6,10 +6,10 @@
 </p>
 <br />
 <p align="center">
-<h3 align="center">Unnamed-bot</h3>
+<h3 style="font-size:300%;" align="center">Unnamed-bot</h3>
   </p>
   <br />
-    <p align="center">
+    <p align="center" si>
     That's a small developed bot for discord.
   </p>
 <br />
