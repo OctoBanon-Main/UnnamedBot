@@ -7,3 +7,6 @@ Warning this repository contains many shitty code
 Discord.py => 1.7.3
 
 DiscordUtils => 1.3.4 (In next version maybe will be not required)
+
+# What not working now
+Unban command
