@@ -1,4 +1,5 @@
 import discord
+import datetime
 from discord.ext import commands
 
 class ErrorHandler(commands.Cog):
@@ -7,15 +8,46 @@ class ErrorHandler(commands.Cog):
 
     @commands.Cog.listener()
     async def on_command_error(self, ctx: commands.Context, error: commands.CommandError):
-        # Unknown command
         if isinstance(error, commands.CommandNotFound):
-            await ctx.send("Unknown command")
-        # Missing permissions
+            CommandNotFoundEmbed = discord.Embed(
+                title = "Error",
+                description = "Sended command not found!",
+                timestamp = datetime.datetime.utcnow(),
+                colour = 0xff0011
+            )
+            CommandNotFoundEmbed.set_footer(text = f"{self.bot.user.name}", icon_url = f"{self.bot.user.avatar_url}")
+            await ctx.send(embed = CommandNotFoundEmbed)
+        
         elif isinstance(error, commands.MissingPermissions):
-            await ctx.send("You are missing permission to run this command!")
-        # Input error
+            MissingPermissionsEmbed = discord.Embed(
+                title = "Error",
+                description = "You are missing permission to run this command!",
+                timestamp = datetime.datetime.utcnow(),
+                colour = 0xff0011
+            )
+            MissingPermissionsEmbed.set_footer(text = f"{self.bot.user.name}", icon_url = f"{self.bot.user.avatar_url}")
+            await ctx.send(embed = MissingPermissionsEmbed)
+        
         elif isinstance(error, commands.UserInputError):
-            await ctx.send("Something wrong happen in your input, please check your input and try again!")
+            UserInputErrorEmbed = discord.Embed(
+                title = "Error",
+                description = "Something wrong happen in your input, please check your input and try again!",
+                timestamp = datetime.datetime.utcnow(),
+                colour = 0xff0011
+            )
+            UserInputErrorEmbed.set_footer(text = f"{self.bot.user.name}", icon_url = f"{self.bot.user.avatar_url}")
+            await ctx.send(embed = UserInputErrorEmbed)
+        
+        elif isinstance(error, commands.CommandError):
+            CommandErrorEmbed = discord.Embed(
+                title = "Error",
+                description = "Error! Please send bug report in issue page on GitHub",
+                timestamp = datetime.datetime.utcnow(),
+                colour = 0xff0011
+            )
+            CommandErrorEmbed.add_field(name = "Link to GitHub: ", value = "https://github.com/OctoBanon-Main/Unnamed-bot/")
+            CommandErrorEmbed.set_footer(text = f"{self.bot.user.name}", icon_url = f"{self.bot.user.avatar_url}")
+            await ctx.send(embed = CommandErrorEmbed)
 
 def setup(bot):
     bot.add_cog(ErrorHandler(bot))
