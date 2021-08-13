@@ -1,3 +1,10 @@
+<p align="center">
+<img src="https://img.shields.io/github/contributors/OctoBanon-Main/Unnamed-bot.svg"/>
+<img src="https://img.shields.io/github/forks/OctoBanon-Main/Unnamed-bot.svg"/>
+<img src="https://img.shields.io/github/stars/OctoBanon-Main/Unnamed-bot.svg"/>
+<img src="https://img.shields.io/github/issues/OctoBanon-Main/Unnamed-bot.svg"/>
+</p>
+
 # Unnamed-bot
 That's a small developed bot for discord. That is written on python. 
 
