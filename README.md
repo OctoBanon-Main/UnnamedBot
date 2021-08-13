@@ -4,11 +4,15 @@
 <img src="https://img.shields.io/github/stars/OctoBanon-Main/Unnamed-bot.svg"/>
 <img src="https://img.shields.io/github/issues/OctoBanon-Main/Unnamed-bot.svg"/>
 </p>
-
-# Unnamed-bot
-That's a small developed bot for discord. That is written on python. 
-
-Warning this repository contains many shitty code
+<br />
+<p align="center">
+<h3 align="center">Unnamed-bot</h3>
+  </p>
+  <br />
+    <p align="center">
+    That's a small developed bot for discord.
+  </p>
+<br />
 
 # Needed libraries
 - Discord.py => 1.7.3
