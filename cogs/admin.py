@@ -1,13 +1,15 @@
 import discord
 import datetime
+from discord import embeds
 from discord.ext import commands
+from discord.ext.commands.core import command
 
 class Admin(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
     @commands.command()
-    async def kick(self, ctx, member:discord.Member, *, reason = None):
+    async def kick(self, ctx, member:discord.User, *, reason = None):
         if reason is None:
             reason = "Not specified"
         
@@ -27,7 +29,7 @@ class Admin(commands.Cog):
         await ctx.send(embed = KickEmbed)
     
     @commands.command()
-    async def ban(self, ctx, member:discord.Member, *, reason = None):
+    async def ban(self, ctx, member:discord.User, *, reason = None):
         if reason is None:
             reason = "Not specified"
         
@@ -46,14 +48,12 @@ class Admin(commands.Cog):
         await member.ban(reason = reason)
         await ctx.send(embed = BanEmbed)
     
-    @commands.command()
-    async def unban(self, ctx, * ,member):
-        banned_users = await ctx.guild.bans()
-        member_name, member_discriminator = member.split('#')
-
+    @commands.command(pass_context=True)
+    async def unban(self, ctx, member:discord.User):
+        user = discord.Object(id=member.id)
         UnbanEmbed = discord.Embed(
             title = "Member unbanned",
-            description = "Member has been successfully muted on the server!",
+            description = "Member has been successfully unbanned on the server!",
             timestamp = datetime.datetime.utcnow(),
             colour = 0xcc9a68
         )
@@ -61,16 +61,11 @@ class Admin(commands.Cog):
         UnbanEmbed.set_thumbnail(url = f"{member.avatar_url}")
         UnbanEmbed.add_field(name = "Unbanned member: ", value = f"{member.mention}")
         UnbanEmbed.add_field(name = "Moderator: ", value = f"{ctx.message.author.mention}")
-
-        for ban_entry in banned_users:
-            user = ban_entry.banned_users
-
-        if (user.name, user.discriminator) == (member_name, member_discriminator):
-            await ctx.guild.unban(user)
-            await ctx.send(f"Member **{user}** has been successfully unbanned on the server")
+        await ctx.guild.unban(user)
+        await ctx.send(embed=UnbanEmbed)
 
     @commands.command()
-    async def mute(self, ctx, member:discord.Member, *, reason = None):
+    async def mute(self, ctx, member:discord.User, *, reason = None):
         role = discord.utils.get(member.guild.roles, name = "Muted")
         
         if reason is None:
@@ -92,7 +87,7 @@ class Admin(commands.Cog):
         await ctx.send(embed = MuteEmbed)
 
     @commands.command()
-    async def unmute(self, ctx, member:discord.Member):
+    async def unmute(self, ctx, member:discord.User):
         role = discord.utils.get(member.guild.roles, name = "Muted")
 
         UnmuteEmbed = discord.Embed(
