@@ -4,6 +4,14 @@
 <p align="center">That's a small developed bot for discord.</p>
 <p align="center">
   <a href="https://github.com/OctoBanon-Main/Unnamed-bot/issues">Send bug report</a>
+  •
+  <a href="https://github.com/OctoBanon-Main/Unnamed-bot#needed-libraries">Needed libraries</a>
+  •
+  <a href="https://github.com/OctoBanon-Main/Unnamed-bot#installation-and-usage">Installation</a>
+  •
+  <a href="https://github.com/OctoBanon-Main/Unnamed-bot#something-is-broken-right-now">Broked features</a>
+  •
+  <a href="https://github.com/OctoBanon-Main/Unnamed-bot#licenses">Licenses</a>
 </p>
 
 <p align="center">
@@ -38,3 +46,8 @@ python3 main.py
 
 #### How I can help?
 - Feel free to fork this repo and make a pull request or create an issue, if you encountered an problem!
+
+#### Licenses
+- All code of the bot licensed of GNU GPL-3.0
+- Discord.py - MIT License
+- DiscordUtils - MIT License
