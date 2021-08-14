@@ -41,7 +41,7 @@ class ErrorHandler(commands.Cog):
         elif isinstance(error, commands.CommandError):
             CommandErrorEmbed = discord.Embed(
                 title = "Error",
-                description = "Error! Please send bug report in issue page on GitHub",
+                description = "Error has been occurred, please send a bug report in the issues page on GitHub",
                 timestamp = datetime.datetime.utcnow(),
                 colour = 0xff0011
             )
