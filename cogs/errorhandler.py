@@ -21,7 +21,7 @@ class ErrorHandler(commands.Cog):
         elif isinstance(error, commands.MissingPermissions):
             MissingPermissionsEmbed = discord.Embed(
                 title = "Error",
-                description = "You are missing permission to run this command!",
+                description = "You are missing permission to run this command.",
                 timestamp = datetime.datetime.utcnow(),
                 colour = 0xff0011
             )
@@ -31,7 +31,7 @@ class ErrorHandler(commands.Cog):
         elif isinstance(error, commands.UserInputError):
             UserInputErrorEmbed = discord.Embed(
                 title = "Error",
-                description = "Something wrong happen in your input, please check your input and try again!",
+                description = "Something wrong happen in your input, please check your input and try again.",
                 timestamp = datetime.datetime.utcnow(),
                 colour = 0xff0011
             )
@@ -41,7 +41,7 @@ class ErrorHandler(commands.Cog):
         elif isinstance(error, commands.CommandError):
             CommandErrorEmbed = discord.Embed(
                 title = "Error",
-                description = "Error has been occurred, please send a bug report in the issues page on GitHub",
+                description = "Error has been occurred, please send a bug report in the issues page on GitHub.",
                 timestamp = datetime.datetime.utcnow(),
                 colour = 0xff0011
             )
