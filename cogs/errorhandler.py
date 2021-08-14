@@ -11,7 +11,7 @@ class ErrorHandler(commands.Cog):
         if isinstance(error, commands.CommandNotFound):
             CommandNotFoundEmbed = discord.Embed(
                 title = "Error",
-                description = "Sended command not found!",
+                description = "The command that you tried to send wasn't was found.",
                 timestamp = datetime.datetime.utcnow(),
                 colour = 0xff0011
             )
