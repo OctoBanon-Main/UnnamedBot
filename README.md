@@ -33,5 +33,5 @@ pip install DiscordUtils
 python3 main.py
 ```
 
-#### What not working now
+#### Something is broken right now
 - Nothing is broken
