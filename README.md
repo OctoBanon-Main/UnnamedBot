@@ -20,7 +20,7 @@
   <img src="https://img.shields.io/github/stars/OctoBanon-Main/Unnamed-bot.svg"/>
   <img src="https://img.shields.io/github/issues/OctoBanon-Main/Unnamed-bot.svg"/>
   <img src="https://img.shields.io/github/license/OctoBanon-Main/Unnamed-bot.svg"/>
-  <img src="https://img.shields.io/github/downloads/OctoBanon-Main/Unnamed-bot.svg"/>
+  <img src="https://img.shields.io/github/downloads/OctoBanon-Main/Unnamed-bot/total"/>
 </p>
 <br />
 
