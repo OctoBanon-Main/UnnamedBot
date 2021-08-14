@@ -1,6 +1,5 @@
 import discord
 import datetime
-from discord import embeds
 from discord.ext import commands
 
 class Admin(commands.Cog):
