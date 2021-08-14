@@ -34,4 +34,4 @@ python3 main.py
 ```
 
 #### What not working now
-- Unban command
+- Nothing is broken
