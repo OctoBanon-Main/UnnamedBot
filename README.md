@@ -1,11 +1,10 @@
-<br />
 <p align="center">
-<h3 align="center">Unnamed bot</h3>
-  </p>
-  <br />
-    <p align="center">That's a small developed bot for discord.</p>
-    <a href="https://github.com/OctoBanon-Main/Unnamed-bot/issues">Send bug report</a>
-  <br />
+  <h3 align="center">Unnamed bot</h3>
+</p>
+<p align="center">That's a small developed bot for discord.</p>
+<p align="center">
+  <a href="https://github.com/OctoBanon-Main/Unnamed-bot/issues">Send bug report</a>
+</p>
 
 <p align="center">
   <img src="https://img.shields.io/github/contributors/OctoBanon-Main/Unnamed-bot.svg"/>
