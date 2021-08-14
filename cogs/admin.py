@@ -1,8 +1,6 @@
 import discord
 import datetime
-from discord import embeds
 from discord.ext import commands
-from discord.ext.commands.core import command
 
 class Admin(commands.Cog):
     def __init__(self, bot):
@@ -48,7 +46,7 @@ class Admin(commands.Cog):
         await member.ban(reason = reason)
         await ctx.send(embed = BanEmbed)
     
-    @commands.command(pass_context=True)
+    @commands.command()
     async def unban(self, ctx, member:discord.User):
         user = discord.Object(id=member.id)
         UnbanEmbed = discord.Embed(
