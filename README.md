@@ -4,6 +4,7 @@
   </p>
   <br />
     <p align="center">That's a small developed bot for discord.</p>
+    <a href="https://github.com/OctoBanon-Main/Unnamed-bot/issues">Send bug report</a>
   <br />
 
 <p align="center">
