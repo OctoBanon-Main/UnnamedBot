@@ -1,14 +1,13 @@
 import discord
 import datetime
-from discord import embeds
 from discord.ext import commands
-from discord.ext.commands.core import command
 
 class Admin(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
+    
     @commands.command()
+    @commands.has_permissions(kick_member = True)
     async def kick(self, ctx, member:discord.User, *, reason = None):
         if reason is None:
             reason = "Not specified"
@@ -29,6 +28,7 @@ class Admin(commands.Cog):
         await ctx.send(embed = KickEmbed)
     
     @commands.command()
+    @commands.has_permissions(ban_member = True)
     async def ban(self, ctx, member:discord.User, *, reason = None):
         if reason is None:
             reason = "Not specified"
@@ -48,7 +48,8 @@ class Admin(commands.Cog):
         await member.ban(reason = reason)
         await ctx.send(embed = BanEmbed)
     
-    @commands.command(pass_context=True)
+    @commands.command()
+    @commands.has_permissions(ban_members = True)
     async def unban(self, ctx, member:discord.User):
         user = discord.Object(id=member.id)
         UnbanEmbed = discord.Embed(
@@ -65,6 +66,7 @@ class Admin(commands.Cog):
         await ctx.send(embed=UnbanEmbed)
 
     @commands.command()
+    @commands.has_permissions(manage_roles = True)
     async def mute(self, ctx, member:discord.User, *, reason = None):
         role = discord.utils.get(member.guild.roles, name = "Muted")
         
@@ -87,6 +89,7 @@ class Admin(commands.Cog):
         await ctx.send(embed = MuteEmbed)
 
     @commands.command()
+    @commands.has_permissions(manage_roles = True)    
     async def unmute(self, ctx, member:discord.User):
         role = discord.utils.get(member.guild.roles, name = "Muted")
 
