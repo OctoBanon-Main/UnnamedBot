@@ -45,6 +45,7 @@ class ErrorHandler(commands.Cog):
                 timestamp = datetime.datetime.utcnow(),
                 colour = 0xff0011
             )
+            CommandErrorEmbed.add_field(name = "Error: ", value = error)
             CommandErrorEmbed.add_field(name = "Link to GitHub: ", value = "https://github.com/OctoBanon-Main/Unnamed-bot/")
             CommandErrorEmbed.set_footer(text = f"{self.bot.user.name}", icon_url = f"{self.bot.user.avatar_url}")
             await ctx.send(embed = CommandErrorEmbed)
