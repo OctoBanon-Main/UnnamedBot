@@ -2,5 +2,5 @@
     "token": "",
     "prefix": "u!",
     "current_game": "u!help",
-    "extensions": ["cogs.help", "cogs.admin", "cogs.errorhandler"]
+    "extensions": ["cogs.admin", "cogs.errorhandler"]
 }
