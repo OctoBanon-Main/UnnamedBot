@@ -35,7 +35,6 @@ For stable working version you should install latest version of python
 - You need to install libraries for this commands
 ```sh
 pip install discord.py
-pip install DiscordUtils
 ```
 - Write token in config.json file
 - Start the bot with the command
