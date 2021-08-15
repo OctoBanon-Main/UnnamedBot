@@ -52,4 +52,4 @@ Feel free to fork this repo and make a pull request or create an issue, if you e
 #### Licenses
 All code of the bot licensed of GNU GPL-3.0
 
-[![https://github.com/Rapptz/discord.py)]]Discord.py by Rapptz - MIT License
+Link: https://github.com/Rapptz/discord.py - Discord.py by Rapptz - MIT License
