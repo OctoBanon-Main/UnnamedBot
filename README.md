@@ -1,7 +1,9 @@
 <p align="center">
-  <h3 align="center">Unnamed bot</h3>
+  <h1 align="center">Unnamed bot</h1>
 </p>
-<p align="center">That's a small developed bot for discord.</p>
+<p align="center">
+  <h2 align="center">That's a small developed bot for discord.</h2>
+</p>
 <p align="center">
   <a href="https://github.com/OctoBanon-Main/Unnamed-bot/issues">Send bug report</a>
   •
