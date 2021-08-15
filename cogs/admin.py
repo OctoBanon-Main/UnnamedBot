@@ -7,7 +7,7 @@ class Admin(commands.Cog):
         self.bot = bot
     
     @commands.command()
-    @commands.has_permissions(kick_member = True)
+    @commands.has_permissions(kick_members = True)
     async def kick(self, ctx, member:discord.User, *, reason = None):
         if reason is None:
             reason = "Not specified"
@@ -28,7 +28,7 @@ class Admin(commands.Cog):
         await ctx.send(embed = KickEmbed)
     
     @commands.command()
-    @commands.has_permissions(ban_member = True)
+    @commands.has_permissions(ban_members = True)
     async def ban(self, ctx, member:discord.User, *, reason = None):
         if reason is None:
             reason = "Not specified"
