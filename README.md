@@ -32,9 +32,9 @@
 #### Installation and usage
 For stable working version you should install latest version of python
 
-- You need to install libraries for this commands
+- You need to install libraries for this command
 ```sh
-pip install discord.py
+pip install -r requirements.txt
 ```
 - Write token in config.json file
 - Start the bot with the command
