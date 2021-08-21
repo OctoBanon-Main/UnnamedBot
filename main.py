@@ -1,4 +1,4 @@
-import json, discord
+import init, json, discord
 from discord.ext import commands
 
 with open("config.json", "r") as read_file:
