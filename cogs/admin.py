@@ -1,5 +1,4 @@
-import discord
-import datetime
+import discord, datetime
 from discord.ext import commands
 
 class Admin(commands.Cog):
