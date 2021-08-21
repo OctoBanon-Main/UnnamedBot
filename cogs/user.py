@@ -21,7 +21,7 @@ class User(commands.Cog):
         WarnsEmbed.set_footer(text = f"{self.bot.user.name}", icon_url = f"{self.bot.user.avatar_url}")
         WarnsEmbed.add_field(name = "Warns: ", value = f"{warns_msg[0]}")
         
-        await ctx.send(embed=WarnsEmbed)
+        await ctx.send(embed = WarnsEmbed)
 
 def setup(bot):
     bot.add_cog(User(bot))
