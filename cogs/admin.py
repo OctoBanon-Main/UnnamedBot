@@ -1,7 +1,8 @@
-import sqlite3
-import discord
-import datetime
+import discord, sqlite3, datetime
 from discord.ext import commands
+
+con = sqlite3.connect("database.db")
+cur = con.cursor()
 
 class Admin(commands.Cog):
     def __init__(self, bot):
@@ -25,6 +26,7 @@ class Admin(commands.Cog):
         KickEmbed.add_field(name = "Moderator: ", value = f"{ctx.message.author.mention}")
         KickEmbed.add_field(name = "Reason: ", value = f"**{reason}**")
 
+        await ctx.message.delete()
         await member.kick(reason = reason)
         await ctx.send(embed = KickEmbed)
     
@@ -46,6 +48,7 @@ class Admin(commands.Cog):
         BanEmbed.add_field(name = "Moderator: ", value = f"{ctx.message.author.mention}")
         BanEmbed.add_field(name = "Reason: ", value = f"**{reason}**")
 
+        await ctx.message.delete()
         await member.ban(reason = reason)
         await ctx.send(embed = BanEmbed)
     
@@ -53,6 +56,7 @@ class Admin(commands.Cog):
     @commands.has_permissions(ban_members = True)
     async def unban(self, ctx, member:discord.User):
         user = discord.Object(id = member.id)
+        
         UnbanEmbed = discord.Embed(
             title = "Member unbanned",
             description = "Member has been successfully unbanned on the server!",
@@ -63,16 +67,18 @@ class Admin(commands.Cog):
         UnbanEmbed.set_thumbnail(url = f"{member.avatar_url}")
         UnbanEmbed.add_field(name = "Unbanned member: ", value = f"{member.mention}")
         UnbanEmbed.add_field(name = "Moderator: ", value = f"{ctx.message.author.mention}")
+
+        await ctx.message.delete()
         await ctx.guild.unban(user)
         await ctx.send(embed=UnbanEmbed)
 
     @commands.command()
     @commands.has_permissions(manage_roles = True)
     async def mute(self, ctx, member:discord.User, *, reason = None):
-        role = discord.utils.get(member.guild.roles, name = "Muted")
-        
         if reason is None:
             reason = "Not specified"
+
+        role = discord.utils.get(member.guild.roles, name = "Muted")
 
         MuteEmbed = discord.Embed(
             title = "Member muted",
@@ -86,6 +92,7 @@ class Admin(commands.Cog):
         MuteEmbed.add_field(name = "Moderator: ", value = f"{ctx.message.author.mention}")
         MuteEmbed.add_field(name = "Reason: ", value = f"**{reason}**")
 
+        await ctx.message.delete()
         await member.add_roles(role)
         await ctx.send(embed = MuteEmbed)
 
@@ -105,8 +112,99 @@ class Admin(commands.Cog):
         UnmuteEmbed.add_field(name = "Unmuted member: ", value = f"{member.mention}")
         UnmuteEmbed.add_field(name = "Moderator: ", value = f"{ctx.message.author.mention}")
 
+        await ctx.message.delete()
         await member.remove_roles(role)
         await ctx.send(embed = UnmuteEmbed)
+
+    @commands.command()
+    @commands.has_permissions(manage_messages = True)
+    async def clear(self, ctx, ammout: int):
+        ClearEmbed = discord.Embed(
+            title = "Cleaning complete",
+            description = "Channel has been successfully cleared!",
+            timestamp = datetime.datetime.utcnow(),
+            colour = 0xcc9a68
+        )
+        ClearEmbed.set_footer(text = f"{self.bot.user.name}", icon_url = f"{self.bot.user.avatar_url}")
+        ClearEmbed.add_field(name = "Deleted messages: ", value = f"{ammout}")
+        ClearEmbed.add_field(name = "In channel: ", value = f"{ctx.channel.mention}")
+        ClearEmbed.add_field(name = "Moderator started cleaning: ", value = f"{ctx.message.author.mention}")
+        
+        await ctx.message.delete()
+        await ctx.channel.purge(limit = ammout)
+        await ctx.send(embed = ClearEmbed)
+        
+    @commands.command()
+    @commands.has_permissions(ban_members = True)
+    async def warn(self, ctx, member: discord.User, *, reason = None):
+        if reason is None:
+            reason = "Not specified"
+        
+        guild_id = ctx.message.guild.id
+        warnings = cur.execute("SELECT warnings FROM guild_warnings WHERE member_id = ? AND guild_id = ?", (member.id, guild_id,)).fetchone()
+        
+        if cur.execute("SELECT member_id FROM guild_warnings WHERE member_id = ? AND guild_id = ?", (member.id, guild_id,)).fetchone() is None:
+            cur.execute("INSERT INTO guild_warnings VALUES(?, ?, ?)", (member.id, guild_id, 1))
+            con.commit()
+        else:
+            cur.execute("UPDATE guild_warnings SET warnings = ? WHERE member_id = ? AND guild_id = ?", (warnings[0]+1, member.id, guild_id,))
+            con.commit()
+        
+        warnings_ammout = cur.execute("SELECT warnings FROM guild_warnings WHERE member_id = ? AND guild_id = ?", (member.id, guild_id,)).fetchone()
+        
+        WarnEmbed = discord.Embed(
+            title = "User warned",
+            description = "Member has been successfully warned on the server!",
+            timestamp = datetime.datetime.utcnow(),
+            colour = 0xcc9a68
+        )
+        WarnEmbed.set_footer(text = f"{self.bot.user.name}", icon_url = f"{self.bot.user.avatar_url}")
+        WarnEmbed.add_field(name = "Warned user: ", value = f"{member.mention}")
+        WarnEmbed.add_field(name = "Moderator: ", value = f"{ctx.message.author.mention}")
+        WarnEmbed.add_field(name = "Reason: ", value = f"**{reason}**")
+        WarnEmbed.add_field(name = "All warnings: ", value = f"{warnings_ammout[0]}")
+        
+        await ctx.message.delete()
+        await ctx.send(embed = WarnEmbed)
+
+    @commands.command()
+    @commands.has_permissions(ban_members = True)
+    async def unwarn(self, ctx, member: discord.User):
+        guild_id = ctx.message.guild.id
+        warnings = cur.execute("SELECT warnings FROM guild_warnings WHERE member_id = ? AND guild_id = ?", (member.id, guild_id,)).fetchone()
+
+        if warnings[0] < 1:
+            NegativeWarnsEmbed = discord.Embed(
+                title = "Warning",
+                description = f"The warning quantity cannot be negative",
+                timestamp = datetime.datetime.utcnow(),
+                colour = 0xff0011
+            )
+            NegativeWarnsEmbed.set_footer(text = f"{self.bot.user.name}", icon_url = f"{self.bot.user.avatar_url}")
+
+            await ctx.send(embed = NegativeWarnsEmbed)
+            return 0
+
+        if cur.execute("SELECT member_id FROM guild_warnings WHERE member_id = ? AND guild_id = ?", (member.id, guild_id,)).fetchone() is None:
+            cur.execute("INSERT INTO guild_warnings VALUES(?, ?, ?)", (member.id, guild_id, 1))
+            con.commit()
+        else:
+            cur.execute("UPDATE guild_warnings SET warnings = ? WHERE member_id = ? AND guild_id = ?", (warnings[0]-1, member.id, guild_id,))
+            con.commit()
+        
+        UnwarnEmbed = discord.Embed(
+            title = "User unwarned",
+            description = "Member has been successfully unwarned on the server!",
+            timestamp = datetime.datetime.utcnow(),
+            colour = 0xcc9a68
+        )
+        UnwarnEmbed.set_footer(text = f"{self.bot.user.name}", icon_url = f"{self.bot.user.avatar_url}")
+        UnwarnEmbed.add_field(name = "Unwarned user: ", value = f"{member.mention}")
+        UnwarnEmbed.add_field(name = "Moderator: ", value = f"{ctx.message.author.mention}")
+        UnwarnEmbed.add_field(name = "All warnings: ", value = f"{warnings[0]-1}")
+        
+        await ctx.message.delete()        
+        await ctx.send(embed = UnwarnEmbed)
 
 def setup(bot):
     bot.add_cog(Admin(bot))
