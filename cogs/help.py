@@ -1,6 +1,6 @@
 import discord, asyncio, datetime
 from discord.ext import commands
-from discord_components import DiscordComponents, Button, ButtonStyle, InteractionType, component
+from discord_components import DiscordComponents, InteractionType, ButtonStyle, Button
 
 class Help(commands.Cog):
     def __init__(self, bot):
@@ -9,15 +9,24 @@ class Help(commands.Cog):
     
     @commands.command()
     async def help(self, ctx):
+        await ctx.message.delete()
         embedOne = discord.Embed(
-            title = "Admin commands",
-            description = "**u!ban** - Ban member **( Usage: u!ban @user Reason (Optional) )** \n **u!unban** - Unban member **( Usage: u!unban @user )** \n **u!kick** - Kick member **( Usage: u!kick @user Reason (Optional) )** \n **u!mute** - Mute member **( Usage: u!mute @user Reason (Optional) )** \n **u!unmute** - Unmute member **( Usage: u!unmute @user )**",
+            title = "User commands",
+            description = "#",
             timestamp = datetime.datetime.utcnow(),
             colour = 0xcc9a68
         )
         embedOne.set_footer(text = f"{self.bot.user.name}", icon_url = f"{self.bot.user.avatar_url}")
 
-        paginationList = [embedOne]
+        embedTwo = discord.Embed(
+            title = "Admin commands",
+            description = "**u!ban** - Ban member **( Usage: u!ban @user Reason (Optional) )** \n **u!unban** - Unban member **( Usage: u!unban @user )** \n **u!kick** - Kick member **( Usage: u!kick @user Reason (Optional) )** \n **u!mute** - Mute member **( Usage: u!mute @user Reason (Optional) )** \n **u!unmute** - Unmute member **( Usage: u!unmute @user )** \n **u!clear** - Clear chat **( Usage: u!clear <ammout> )** \n **u!warn** - Give warning to server member **( Usage: u!warn @user Reason (Optional) )** \n **u!unwarn - Remove warning from server member **( Usage: u!unwarn @user )**",
+            timestamp = datetime.datetime.utcnow(),
+            colour = 0xcc9a68
+        )
+        embedTwo.set_footer(text = f"{self.bot.user.name}", icon_url = f"{self.bot.user.avatar_url}")
+
+        paginationList = [embedOne, embedTwo]
         current = 0
         
         mainMessage = await ctx.send(
@@ -48,8 +57,8 @@ class Help(commands.Cog):
             try:
                 interaction = await self.bot.wait_for(
                     "button_click",
-                    check = lambda i: i.component.id in ["back", "front"],
-                    timeout = 10.0
+                    check = lambda i: i.component.id in ["back", "front"], #You can add more
+                    timeout = 10.0 #10 seconds of inactivity
                 )
                 if interaction.component.id == "back":
                     current -= 1
@@ -63,7 +72,7 @@ class Help(commands.Cog):
                 await interaction.respond(
                     type = InteractionType.UpdateMessage,
                     embed = paginationList[current],
-                    components = [
+                    components = [ #Use any button style you wish to :)
                         [
                             Button(
                                 label = "Prev",

@@ -10,18 +10,19 @@ class User(commands.Cog):
 
     @commands.command()
     async def warns(self, ctx):
-        warns_msg = cur.execute("SELECT warns FROM warns WHERE user_id = ? AND guild_id = ?", (ctx.message.author.id, ctx.message.guild.id,)).fetchone()
+        warnings_msg = cur.execute("SELECT warnings FROM warns WHERE member_id = ? AND guild_id = ?", (ctx.message.author.id, ctx.message.guild.id,)).fetchone()
         
         WarnsEmbed = discord.Embed(
-            title = "Your warns",
+            title = "Your warnings",
             description = "#",
             timestamp = datetime.datetime.utcnow(),
             colour = 0xcc9a68
         )
         WarnsEmbed.set_footer(text = f"{self.bot.user.name}", icon_url = f"{self.bot.user.avatar_url}")
-        WarnsEmbed.add_field(name = "Warns: ", value = f"{warns_msg[0]}")
+        WarnsEmbed.add_field(name = "All warnings: ", value = f"{warnings_msg[0]}")
         
-        await ctx.send(embed=WarnsEmbed)
+        await ctx.message.delete()
+        await ctx.send(embed = WarnsEmbed)
 
 def setup(bot):
     bot.add_cog(User(bot))
