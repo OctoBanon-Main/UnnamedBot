@@ -1,6 +1,4 @@
-import sqlite3
-import discord
-import datetime
+import discord, sqlite3, datetime
 from discord.ext import commands
 
 con = sqlite3.connect("database.db")
