@@ -26,7 +26,6 @@ class Admin(commands.Cog):
         KickEmbed.add_field(name = "Moderator: ", value = f"{ctx.message.author.mention}")
         KickEmbed.add_field(name = "Reason: ", value = f"**{reason}**")
 
-        await ctx.message.delete()
         await member.kick(reason = reason)
         await ctx.send(embed = KickEmbed)
     
@@ -48,7 +47,6 @@ class Admin(commands.Cog):
         BanEmbed.add_field(name = "Moderator: ", value = f"{ctx.message.author.mention}")
         BanEmbed.add_field(name = "Reason: ", value = f"**{reason}**")
 
-        await ctx.message.delete()
         await member.ban(reason = reason)
         await ctx.send(embed = BanEmbed)
     
@@ -68,7 +66,6 @@ class Admin(commands.Cog):
         UnbanEmbed.add_field(name = "Unbanned member: ", value = f"{member.mention}")
         UnbanEmbed.add_field(name = "Moderator: ", value = f"{ctx.message.author.mention}")
 
-        await ctx.message.delete()
         await ctx.guild.unban(user)
         await ctx.send(embed=UnbanEmbed)
 
@@ -92,7 +89,6 @@ class Admin(commands.Cog):
         MuteEmbed.add_field(name = "Moderator: ", value = f"{ctx.message.author.mention}")
         MuteEmbed.add_field(name = "Reason: ", value = f"**{reason}**")
 
-        await ctx.message.delete()
         await member.add_roles(role)
         await ctx.send(embed = MuteEmbed)
 
@@ -112,7 +108,6 @@ class Admin(commands.Cog):
         UnmuteEmbed.add_field(name = "Unmuted member: ", value = f"{member.mention}")
         UnmuteEmbed.add_field(name = "Moderator: ", value = f"{ctx.message.author.mention}")
 
-        await ctx.message.delete()
         await member.remove_roles(role)
         await ctx.send(embed = UnmuteEmbed)
 
@@ -164,7 +159,6 @@ class Admin(commands.Cog):
         WarnEmbed.add_field(name = "Reason: ", value = f"**{reason}**")
         WarnEmbed.add_field(name = "Warns: ", value = f"{warns_msg[0]}")
         
-        await ctx.message.delete()
         await ctx.send(embed = WarnEmbed)
 
     @commands.command()
@@ -195,7 +189,6 @@ class Admin(commands.Cog):
         WarnEmbed.add_field(name = "Moderator: ", value = f"{ctx.message.author.mention}")
         WarnEmbed.add_field(name = "Warns: ", value = f"{warns[0]-1}")
         
-        await ctx.message.delete()
         await ctx.send(embed = WarnEmbed)
 
 def setup(bot):
