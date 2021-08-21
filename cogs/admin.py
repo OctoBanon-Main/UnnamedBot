@@ -131,10 +131,8 @@ class Admin(commands.Cog):
         
         guild_id = ctx.message.guild.id
         warns = cur.execute("SELECT warns FROM warns WHERE user_id = ? AND guild_id = ?", (member.id, guild_id,)).fetchone()
-        
-        users = cur.execute("SELECT user_id FROM warns WHERE user_id = ? AND guild_id = ?", (member.id, guild_id,)).fetchone()
-        
-        if users is None:
+                
+        if cur.execute("SELECT user_id FROM warns WHERE user_id = ? AND guild_id = ?", (member.id, guild_id,)).fetchone() is None:
             cur.execute("INSERT INTO warns VALUES(?, ?, ?)", (member.id, guild_id, 1))
             con.commit()
         else:
