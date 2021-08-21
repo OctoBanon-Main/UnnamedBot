@@ -10,7 +10,7 @@ class User(commands.Cog):
 
     @commands.command()
     async def warns(self, ctx):
-        warns_msg = cur.execute("SELECT warns FROM warns WHERE user_id = ? AND guild_id = ?", (ctx.message.author.id, ctx.message.guild.id,)).fetchone()
+        warnings_msg = cur.execute("SELECT warnings FROM guild_warnings WHERE member_id = ? AND guild_id = ?", (ctx.message.author.id, ctx.message.guild.id,)).fetchone()
         
         WarnsEmbed = discord.Embed(
             title = "Your warns",
