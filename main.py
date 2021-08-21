@@ -1,5 +1,4 @@
-import json
-import discord
+import json, discord
 from discord.ext import commands
 
 with open("config.json", "r") as read_file:
@@ -9,6 +8,7 @@ bot = commands.Bot(command_prefix=config["prefix"])
 
 @bot.event
 async def on_ready():
+    init.startup()
     await bot.change_presence(activity=discord.Game(name=config["current_game"]))
     print("──────────────────────────────────────────")
     print("Bot is ready")
