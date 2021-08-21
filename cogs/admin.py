@@ -107,6 +107,82 @@ class Admin(commands.Cog):
         await member.remove_roles(role)
         await ctx.send(embed = UnmuteEmbed)
 
+    @commands.command()
+    @commands.has_permissions(manage_messages = True)
+    async def clear(self, ctx, ammout: int):
+        ClearEmbed = discord.Embed(
+            title = "Cleaning complete",
+            description = "Channel has been successfully cleared!",
+            timestamp = datetime.datetime.utcnow(),
+            colour = 0xcc9a68
+        )
+        ClearEmbed.set_footer(text = f"{self.bot.user.name}", icon_url = f"{self.bot.user.avatar_url}")
+        ClearEmbed.add_field(name = "Deleted messages: ", value = f"{ammout}")
+        ClearEmbed.add_field(name = "In channel: ", value = f"{ctx.channel.mention}")
+        ClearEmbed.add_field(name = "Moderator started cleaning: ", value = f"{ctx.message.author.mention}")
+
+        await ctx.channel.purge(limit = ammout+1)
+        await ctx.send(embed = ClearEmbed)
+        
+    @commands.command()
+    @commands.has_permissions(ban_members = True)
+    async def warn(self, ctx, member: discord.User, *, reason = None):
+        guild_id = ctx.message.guild.id
+        warns = cur.execute("SELECT warns FROM warns WHERE user_id = ? AND guild_id = ?", (member.id, guild_id,)).fetchone()
+        
+        users = cur.execute("SELECT user_id FROM warns WHERE user_id = ? AND guild_id = ?", (member.id, guild_id,)).fetchone()
+        
+        if users is None:
+            cur.execute("INSERT INTO warns VALUES(?, ?, ?)", (member.id, guild_id, 1))
+            con.commit()
+        else:
+            cur.execute("UPDATE warns SET warns = ? WHERE user_id = ? AND guild_id = ?", (warns[0]+1, member.id, guild_id,))
+            con.commit()
+        
+        warns_msg = cur.execute("SELECT warns FROM warns WHERE user_id = ? AND guild_id = ?", (member.id, guild_id,)).fetchone()
+        
+        WarnEmbed = discord.Embed(
+            title = "User warned",
+            description = "Member has been successfully warned on the server!",
+            timestamp = datetime.datetime.utcnow(),
+            colour = 0xcc9a68
+        )
+        WarnEmbed.set_footer(text = f"{self.bot.user.name}", icon_url = f"{self.bot.user.avatar_url}")
+        WarnEmbed.add_field(name = "Warned user: ", value = f"{member.mention}")
+        WarnEmbed.add_field(name = "Moderator: ", value = f"{ctx.message.author.mention}")
+        WarnEmbed.add_field(name = "Reason: ", value = f"**{reason}**")
+        WarnEmbed.add_field(name = "Warns: ", value = f"{warns_msg[0]}")
+        await ctx.send(embed=WarnEmbed)
+
+    @commands.command()
+    @commands.has_permissions(ban_members = True)
+    async def unwarn(self, ctx, member: discord.User):
+        guild_id = ctx.message.guild.id
+        warns = cur.execute("SELECT warns FROM warns WHERE user_id = ? AND guild_id = ?", (member.id, guild_id,)).fetchone()
+
+        if warns[0] < 1:
+            await ctx.send("U can't xd")
+            return 0
+
+        if cur.execute("SELECT user_id FROM warns WHERE user_id = ? AND guild_id = ?", (member.id, guild_id,)).fetchone() is None:
+            cur.execute("INSERT INTO warns VALUES(?, ?, ?)", (member.id, guild_id, 1))
+            con.commit()
+        else:
+            cur.execute("UPDATE warns SET warns = ? WHERE user_id = ? AND guild_id = ?", (warns[0]-1, member.id, guild_id,))
+            con.commit()
+        
+        WarnEmbed = discord.Embed(
+            title = "User unwarned",
+            description = "Member has been successfully unwarned on the server!",
+            timestamp = datetime.datetime.utcnow(),
+            colour = 0xcc9a68
+        )
+        WarnEmbed.set_footer(text = f"{self.bot.user.name}", icon_url = f"{self.bot.user.avatar_url}")
+        WarnEmbed.add_field(name = "Unwarned user: ", value = f"{member.mention}")
+        WarnEmbed.add_field(name = "Moderator: ", value = f"{ctx.message.author.mention}")
+        WarnEmbed.add_field(name = "Warns: ", value = f"{warns[0]-1}")
+        await ctx.send(embed=WarnEmbed)
+
 def setup(bot):
     bot.add_cog(Admin(bot))
     print("Admin commands extension successfully registered")
