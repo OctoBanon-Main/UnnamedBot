@@ -28,15 +28,13 @@
 
 #### Needed libraries
 - Discord.py => 1.7.3
-- DiscordUtils => 1.3.4 (Maybe in next version this library won't be required)
 
 #### Installation and usage
 For stable working version you should install latest version of python
 
-- You need to install libraries for this commands
+- You need to install libraries for this command
 ```sh
-pip install discord.py
-pip install DiscordUtils
+pip install -r requirements.txt
 ```
 - Write token in config.json file
 - Start the bot with the command
@@ -53,6 +51,4 @@ Feel free to fork this repo and make a pull request or create an issue, if you e
 #### Licenses
 All code of the bot licensed of GNU GPL-3.0
 
-Discord.py - MIT License
-
-DiscordUtils - MIT License
+Link: https://github.com/Rapptz/discord.py - Discord.py by Rapptz - MIT License
