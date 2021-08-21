@@ -38,6 +38,16 @@ class ErrorHandler(commands.Cog):
             UserInputErrorEmbed.set_footer(text = f"{self.bot.user.name}", icon_url = f"{self.bot.user.avatar_url}")
             await ctx.send(embed = UserInputErrorEmbed)
         
+        elif isinstance(error, commands.CommandOnCooldown):
+            CommandCooldownEmbed = discord.Embed(
+                title = "Warning",
+                description = f"**{error}**",
+                timestamp = datetime.datetime.utcnow(),
+                colour = 0xff0011
+            )
+            CommandCooldownEmbed.set_footer(text = f"{self.bot.user.name}", icon_url = f"{self.bot.user.avatar_url}")
+            await ctx.send(embed = CommandCooldownEmbed)
+        
         elif isinstance(error, commands.CommandError):
             CommandErrorEmbed = discord.Embed(
                 title = "Error",
