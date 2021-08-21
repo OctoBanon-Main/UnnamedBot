@@ -1,3 +1,4 @@
+import sqlite3
 import discord
 import datetime
 from discord.ext import commands
@@ -7,7 +8,7 @@ class Admin(commands.Cog):
         self.bot = bot
     
     @commands.command()
-    @commands.has_permissions(kick_member = True)
+    @commands.has_permissions(kick_members = True)
     async def kick(self, ctx, member:discord.User, *, reason = None):
         if reason is None:
             reason = "Not specified"
@@ -28,7 +29,7 @@ class Admin(commands.Cog):
         await ctx.send(embed = KickEmbed)
     
     @commands.command()
-    @commands.has_permissions(ban_member = True)
+    @commands.has_permissions(ban_members = True)
     async def ban(self, ctx, member:discord.User, *, reason = None):
         if reason is None:
             reason = "Not specified"
@@ -51,7 +52,7 @@ class Admin(commands.Cog):
     @commands.command()
     @commands.has_permissions(ban_members = True)
     async def unban(self, ctx, member:discord.User):
-        user = discord.Object(id=member.id)
+        user = discord.Object(id = member.id)
         UnbanEmbed = discord.Embed(
             title = "Member unbanned",
             description = "Member has been successfully unbanned on the server!",
