@@ -47,9 +47,9 @@ python3 main.py
 Nothing is broken
 
 #### TO:DO
-- [x] Base commands of the bot (50% Completed)
-- [x] Economic commands
-- [x] Web dashboard 
+- [ ] Base commands of the bot (50% Completed)
+- [ ] Economic commands
+- [ ] Web dashboard 
 
 #### How I can help?
 Feel free to fork this repo and make a pull request or create an issue, if you encountered an problem!
