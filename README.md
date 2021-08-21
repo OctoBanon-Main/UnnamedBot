@@ -53,4 +53,5 @@ Feel free to fork this repo and make a pull request or create an issue, if you e
 All code of the bot licensed of GNU GPL-3.0
 
 Discord.py by Rapptz - MIT License
+
 discord_components by kiki7000 - MIT License
