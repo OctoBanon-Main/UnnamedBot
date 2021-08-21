@@ -127,6 +127,9 @@ class Admin(commands.Cog):
     @commands.command()
     @commands.has_permissions(ban_members = True)
     async def warn(self, ctx, member: discord.User, *, reason = None):
+        if reason is None:
+            reason = "Not specified"
+        
         guild_id = ctx.message.guild.id
         warns = cur.execute("SELECT warns FROM warns WHERE user_id = ? AND guild_id = ?", (member.id, guild_id,)).fetchone()
         
