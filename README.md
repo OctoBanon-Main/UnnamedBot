@@ -49,6 +49,7 @@ Nothing is broken
 #### TO:DO
 - [ ] Base commands of the bot (50% Completed)
 - [ ] Economic commands
+- [ ] Music commands
 - [ ] Web dashboard 
 
 #### How I can help?
