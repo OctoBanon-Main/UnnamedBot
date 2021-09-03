@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">Unnamed bot</h1>
+  <h1 align="center">UnnamedBot</h1>
 </p>
 <p align="center">
   <h2 align="center">That's a small developed bot for discord. (Development stopped)</h2>
@@ -56,8 +56,8 @@ Nothing is broken
 Feel free to fork this repo and make a pull request or create an issue, if you encountered an problem!
 
 #### Licenses
-All code of the bot licensed of GNU GPL-3.0
+The project is licensed under the GNU GPL 3.0.
 
-Discord.py by Rapptz - MIT License
+Discord.py by Rapptz - MIT License.
 
-discord_components by kiki7000 - MIT License
+discord_components by kiki7000 - MIT License.
