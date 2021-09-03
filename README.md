@@ -17,12 +17,12 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/contributors/OctoBanon-Main/Unnamed-bot.svg"/>
-  <img src="https://img.shields.io/github/forks/OctoBanon-Main/Unnamed-bot.svg"/>
-  <img src="https://img.shields.io/github/stars/OctoBanon-Main/Unnamed-bot.svg"/>
-  <img src="https://img.shields.io/github/issues/OctoBanon-Main/Unnamed-bot.svg"/>
-  <img src="https://img.shields.io/github/downloads/OctoBanon-Main/Unnamed-bot/total"/>
-  <img src="https://img.shields.io/github/license/OctoBanon-Main/Unnamed-bot.svg"/>
+  <img src="https://img.shields.io/github/contributors/OctoBanon-Main/UnnamedBot?style=for-the-badge"/>
+  <img src="https://img.shields.io/github/forks/OctoBanon-Main/UnnamedBot?style=for-the-badge"/>
+  <img src="https://img.shields.io/github/stars/OctoBanon-Main/UnnamedBot?style=for-the-badge"/>
+  <img src="https://img.shields.io/github/issues/OctoBanon-Main/UnnamedBot?style=for-the-badge"/>
+  <img src="https://img.shields.io/github/downloads/OctoBanon-Main/UnnamedBot/total?style=for-the-badge"/>
+  <img src="https://img.shields.io/github/license/OctoBanon-Main/UnnamedBot?style=for-the-badge"/>
 </p>
 <br />
 
