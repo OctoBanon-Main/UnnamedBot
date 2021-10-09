@@ -1,6 +1,0 @@
-{
-    "token": "",
-    "prefix": "u!",
-    "current_game": "u!help",
-    "extensions": ["cogs.help", "cogs.admin", "cogs.user", "cogs.errorhandler"]
-}
