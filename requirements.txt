@@ -1,2 +1,0 @@
-discord.py>=1.7.3
-discord_components>=1.1.4
