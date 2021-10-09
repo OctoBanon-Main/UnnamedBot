@@ -7,10 +7,6 @@
 <p align="center">
   <a href="https://github.com/OctoBanon-Main/Unnamed-bot/issues">Send bug report</a>
   •
-  <a href="https://github.com/OctoBanon-Main/Unnamed-bot#needed-libraries">Needed libraries</a>
-  •
-  <a href="https://github.com/OctoBanon-Main/Unnamed-bot#installation-and-usage">Installation</a>
-  •
   <a href="https://github.com/OctoBanon-Main/Unnamed-bot#something-is-broken-right-now">Broked features</a>
   •
   <a href="https://github.com/OctoBanon-Main/Unnamed-bot#licenses">Licenses</a>
@@ -26,25 +22,8 @@
 </p>
 <br />
 
-#### Needed libraries
-- Discord.py => 1.7.3
-- discord_components => 1.1.4
-
-#### Installation and usage
-For stable working version you should install latest version of python
-
-- You need to install libraries for this command
-```sh
-pip install -r requirements.txt
-```
-- Write token in config.json file
-- Start the bot with the command
-```sh
-python3 main.py
-```
-
 #### TO:DO
-- [ ] Base commands of the bot (50% Completed)
+- [ ] Base commands of the bot
 - [ ] Economic commands
 - [ ] Music commands
 - [ ] Web dashboard 
@@ -57,7 +36,3 @@ Feel free to fork this repo and make a pull request or create an issue, if you e
 
 #### Licenses
 The project is licensed under the GNU GPL 3.0.
-
-Discord.py by Rapptz - MIT License.
-
-discord_components by kiki7000 - MIT License.
