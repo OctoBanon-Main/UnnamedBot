@@ -3,6 +3,7 @@
 </p>
 <p align="center">
   <h2 align="center">That's a small developed bot for discord.</h2>
+  <h3 align="center">Development resumed in another programming language</h3>
 </p>
 <p align="center">
   <a href="https://github.com/OctoBanon-Main/Unnamed-bot/issues">Send bug report</a>
