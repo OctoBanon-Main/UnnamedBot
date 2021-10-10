@@ -24,10 +24,11 @@
 <br />
 
 #### TO:DO
+- [ ] Slash commands registration
 - [ ] Base commands of the bot
 - [ ] Economic commands
 - [ ] Music commands
-- [ ] Web dashboard 
+- [ ] Web dashboard
 
 #### Something is broken right now
 Nothing is broken
