@@ -37,3 +37,5 @@ Feel free to fork this repo and make a pull request or create an issue, if you e
 
 #### Licenses
 The project is licensed under the GNU GPL 3.0.
+
+discord.js - Apache license 2.0
