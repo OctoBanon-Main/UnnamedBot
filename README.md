@@ -3,10 +3,14 @@
 </p>
 <p align="center">
   <h2 align="center">That's a small developed bot for discord.</h2>
-  <h3 align="center">Development resumed in another programming language</h3>
+  <h3 align="center">The development of this version has been stopped.</h3>
 </p>
 <p align="center">
   <a href="https://github.com/OctoBanon-Main/Unnamed-bot/issues">Send bug report</a>
+  •
+  <a href="https://github.com/OctoBanon-Main/Unnamed-bot#needed-libraries">Needed libraries</a>
+  •
+  <a href="https://github.com/OctoBanon-Main/Unnamed-bot#installation-and-usage">Installation</a>
   •
   <a href="https://github.com/OctoBanon-Main/Unnamed-bot#something-is-broken-right-now">Broked features</a>
   •
@@ -23,12 +27,28 @@
 </p>
 <br />
 
+#### Needed libraries
+- Discord.py => 1.7.3
+- discord_components => 1.1.4
+
+#### Installation and usage
+For stable working version you should install latest version of python
+
+- You need to install libraries for this command
+```sh
+pip install -r requirements.txt
+```
+- Write token in config.json file
+- Start the bot with the command
+```sh
+python3 main.py
+```
+
 #### TO:DO
-- [ ] Slash commands registration
-- [ ] Base commands of the bot
+- [ ] Base commands of the bot (50% Completed)
 - [ ] Economic commands
 - [ ] Music commands
-- [ ] Web dashboard
+- [ ] Web dashboard 
 
 #### Something is broken right now
 Nothing is broken
@@ -39,4 +59,4 @@ Feel free to fork this repo and make a pull request or create an issue, if you e
 #### Licenses
 The project is licensed under the GNU GPL 3.0.
 
-[discord.js](https://github.com/discordjs/discord.js) - Apache License 2.0
+[Pycord](https://github.com/Pycord-Development/pycord) by Pycord Development - MIT License.
