@@ -28,8 +28,7 @@
 <br />
 
 #### Needed libraries
-- Discord.py => 1.7.3
-- discord_components => 1.1.4
+- Pycord => 1.7.3
 
 #### Installation and usage
 For stable working version you should install latest version of python
