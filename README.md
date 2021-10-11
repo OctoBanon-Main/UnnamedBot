@@ -33,13 +33,18 @@
 For stable working version you should install latest version of python
 
 - You need to install libraries for this command
-```sh
+```bash
 pip install -r requirements.txt
 ```
 - Write token in config.json file
 - Start the bot with the command
-```sh
+##### On Linux:
+```bash
 python3 main.py
+```
+##### On Windows:
+```cmd
+python main.py
 ```
 
 #### TO:DO
