@@ -7,10 +7,6 @@
 <p align="center">
   <a href="https://github.com/OctoBanon-Main/Unnamed-bot/issues">Send bug report</a>
   •
-  <a href="https://github.com/OctoBanon-Main/Unnamed-bot#needed-libraries">Needed libraries</a>
-  •
-  <a href="https://github.com/OctoBanon-Main/Unnamed-bot#installation-and-usage">Installation</a>
-  •
   <a href="https://github.com/OctoBanon-Main/Unnamed-bot#something-is-broken-right-now">Broked features</a>
   •
   <a href="https://github.com/OctoBanon-Main/Unnamed-bot#licenses">Licenses</a>
@@ -26,29 +22,8 @@
 </p>
 <br />
 
-#### Needed libraries
-- Pycord => 1.7.3
-
-#### Installation and usage
-For stable working version you should install latest version of python
-
-- You need to install libraries for this command
-```bash
-pip install -r requirements.txt
-```
-- Write token in config.json file
-- Start the bot with the command
-##### On Linux:
-```bash
-python3 main.py
-```
-##### On Windows:
-```cmd
-python main.py
-```
-
 #### TO:DO
-- [X] Slash commands registration
+- [ ] Slash commands registration
 - [ ] Base commands of the bot (50% Completed)
 - [ ] Economic commands
 - [ ] Music commands
@@ -63,4 +38,4 @@ Feel free to fork this repo and make a pull request or create an issue, if you e
 #### Licenses
 The project is licensed under the GNU GPL 3.0.
 
-[Pycord](https://github.com/Pycord-Development/pycord) by Pycord Development - MIT License.
+[discord.js](https://github.com/discordjs/discord.js) - Apache License 2.0
