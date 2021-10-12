@@ -48,7 +48,7 @@ python main.py
 ```
 
 #### TO:DO
-- [ ] Slash commands registration
+- [X] Slash commands registration
 - [ ] Base commands of the bot (50% Completed)
 - [ ] Economic commands
 - [ ] Music commands
