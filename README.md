@@ -3,6 +3,7 @@
 </p>
 <p align="center">
   <h2 align="center">That's a small developed bot for discord.</h2>
+  <h3 align="center">Development has been suspended for an indefinite period</h3>
 </p>
 <p align="center">
   <a href="https://github.com/OctoBanon-Main/Unnamed-bot/issues">Send bug report</a>
@@ -24,7 +25,7 @@
 
 #### TO:DO
 - [ ] Slash commands registration
-- [ ] Base commands of the bot (50% Completed)
+- [ ] Base commands of the bot
 - [ ] Economic commands
 - [ ] Music commands
 - [ ] Web dashboard 
